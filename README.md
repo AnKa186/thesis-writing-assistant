@@ -1,3 +1,55 @@
+# Thesis Writing Assistant — Claude Scholar fork
+
+This fork of [Galaxy-Dawn/claude-scholar](https://github.com/Galaxy-Dawn/claude-scholar)
+adds a focused `/thesis-writing-assistant` for an NTUA diploma thesis on machine
+learning for construction-project delay prediction. The researcher retains
+scientific judgment and the final wording.
+
+The [custom skill](skills/thesis-writing-assistant/SKILL.md) combines evidence-based
+section drafting, figure interpretation, citation verification, uncertainty, and
+claim review. It reads the current `THESIS_CONTEXT.md`, the author's section brief,
+and selected results from the local thesis project. Context, datasets, experiment
+results, and case-study material are not bundled with this skill.
+
+## Install this fork's thesis skill
+
+Clone this fork and install only the custom skill into an existing thesis project:
+
+```bash
+git clone https://github.com/AnKa186/thesis-writing-assistant.git
+cd thesis-writing-assistant
+python3 scripts/install-thesis-writing-assistant.py --project /absolute/path/to/thesis-project
+```
+
+The installer requires Python 3.9+ and uses the standard library. It writes only
+`.claude/skills/thesis-writing-assistant/` in the selected project. It does not
+install the full Scholar framework or change Claude settings, hooks, other skills,
+or research files. Use `--dry-run` to preview. For an update, pull the fork and run
+the installer with `--update`; the previous installation is backed up under
+`.claude/skill-backups/thesis-writing-assistant/`.
+
+In Claude Code opened on your thesis project, use:
+
+```text
+/thesis-writing-assistant
+Read THESIS_CONTEXT.md and the attached section brief. Draft the requested
+section from the specified results, explain uncertainty, and identify claims
+that still need evidence. Do not run training or change experiment files.
+```
+
+Use the [section brief](skills/thesis-writing-assistant/assets/section-brief.md)
+to specify questions, notebooks, tables, figures, language, and desired length.
+Greek is the default drafting language; English or bilingual output can be requested.
+Institution-specific formatting follows the actual school/supervisor guide when supplied.
+
+The original MIT [LICENSE](LICENSE) and upstream attribution are retained.
+The thesis skill's [provenance](skills/thesis-writing-assistant/references/upstream.md)
+also records the selected Academic Paper Skills influences and their license.
+Original Claude Scholar documentation follows; its full-install commands are
+separate from the selective thesis-skill installation above.
+
+---
+
 <div align="center">
   <img src="LOGO.png" alt="Claude Scholar Logo" width="100%"/>
 
